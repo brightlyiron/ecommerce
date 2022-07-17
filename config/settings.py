@@ -38,6 +38,7 @@ DJANGO_APPS = [
 
 THIRD_PART_APPS = [
     'rest_framework',
+    'drf_spectacular',
 ]
 
 CUSTOM_APPS = [
@@ -47,11 +48,17 @@ CUSTOM_APPS = [
 INSTALLED_APPS = DJANGO_APPS + THIRD_PART_APPS + CUSTOM_APPS
 
 REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'E-commerce API',
+    'DESCRIPTION': 'Hell World!!',
+    'VERSION': '0.0.1',
+    'SERVE_INCLUDE_SCHEMA': False,
 }
 
 MIDDLEWARE = [
